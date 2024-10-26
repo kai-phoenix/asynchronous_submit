@@ -1,0 +1,29 @@
+@charset "utf-8";
+.submit_area
+{
+	display:flex;
+	width:300px;
+	padding:10px;
+}
+#send_button_confirm
+{
+    cursor : pointer;
+	/* top:11px;
+	left:280px; */
+	display:block;
+	border:1px solid #000;
+	width: 180px;
+    height:44px;
+}
+
+#send_button_cancel
+{
+    cursor : pointer;
+	/* top:11px;
+	left:280px; */
+	display:block;
+	margin:0 0 0 50px;
+	border:1px solid #000;
+	width: 180px;
+    height:44px;
+}
