@@ -1,0 +1,38 @@
+version: "3.8"
+#DB外付け
+volumes:
+  db-store:
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    ports:
+    - 7000:80
+    volumes:
+    - ./backend:/var/www/html/
+    depends_on:
+    - db
+
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    ports:
+        - 14506:3306
+    volumes:
+      - db-store:/var/www/mysql
+    user: mysql
+    environment:
+      MYSQL_DATABASE: local_database
+      MYSQL_USER: explorer
+      MYSQL_PASSWORD: skillup
+      MYSQL_ROOT_PASSWORD: skillup
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    ports:
+      - "10000:8080"
+    depends_on:
+      - db
